@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tienda de Deportes Inclusivos</title>
+  <style>
+    /* ---------- ESTILOS GENERALES ---------- */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ---------- BARRA AMARILLA SUPERIOR ---------- */
+    .top-bar {
+      background-color: #FFD700; /* Amarillo */
+      text-align: center;
+      color: #003366;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    /* ---------- BANNER (SEGUNDA FRANJA AMARILLA) ---------- */
+    .banner {
+      background-color: #FFD700;
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+      position: relative;
+    }
+    .banner a {
+      color: #003366;
+    }
+    .banner button {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      border: none;
+      background: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    /* ---------- CABECERA / ENCABEZADO ---------- */
+    .header {
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 2px solid #ccc;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #003366;
+    }
+    nav.nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav.nav a {
+      font-weight: bold;
+      color: #005f73;
+    }
+    .cta {
+      background-color: #00796B; /* Botón estilo teal */
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    /* ---------- SECCIÓN PRINCIPAL ---------- */
+    .main-content {
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .main-content h1 {
+      color: #003366;
+      font-size: 36px;
+      margin: 10px 0;
+    }
+    .main-content p {
+      margin: 8px 0;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #333;
+    }
+
+    /* ---------- CARRUSEL DE IMÁGENES ---------- */
+    #carousel {
+      position: relative;
+      max-width: 1000px;
+      margin: 40px auto;
+      overflow: hidden;
+      height: 400px; /* Ajusta la altura según tus imágenes */
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #fff; /* Fondo blanco para que se vea claro si la imagen no ocupa todo */
+    }
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .carousel-slide.active {
+      opacity: 1;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .carousel-controls {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .carousel-controls button {
+      background-color: #005f73;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      margin: 0 5px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    /* ---------- CATÁLOGO DE PRODUCTOS ---------- */
+    .catalog {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0 20px;
+      margin-bottom: 40px;
+    }
+    .product {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin: 15px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .product h3 {
+      color: #005f73;
+      margin-top: 10px;
+    }
+    .product p {
+      font-size: 0.95em;
+      margin: 10px 0;
+      color: #444;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #005f73;
+      color: #fff;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    /* ---------- PIE DE PÁGINA ---------- */
+    footer {
+      background-color: #fff;
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid #ccc;
+    }
+    footer p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA AMARILLA SUPERIOR (FIJA) -->
+  <div class="top-bar">
+    ¡Bienvenidos a la Tienda de Deportes Inclusivos de Vera Octaviano Jose & Carmona Caselin Victor!
+  </div>
+
+  <!-- BANNER (SEGUNDA FRANJA AMARILLA) -->
+  <div class="banner" id="banner">
+    ¡Envíos Gratis a todo el país! <a href="#">Conoce Nuestras Promociones</a>
+    <button onclick="document.getElementById('banner').style.display='none'">&times;</button>
+  </div>
+
+  <!-- ENCABEZADO -->
+  <div class="header">
+    <div class="logo">Deportes Inclusivos</div>
+    <nav class="nav">
+      <a href="#">Inicio</a>
+      <a href="#">Productos</a>
+      <a href="#">Sobre Nosotros</a>
+      <a href="#">Contacto</a>
+    </nav>
+    <a class="cta" href="#">Solicita información</a>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL: PRESENTACIÓN DE LA TIENDA -->
+  <div class="main-content">
+    <h1>Artículos Deportivos Adaptados</h1>
+    <p>
+      En <strong>Deportes Inclusivos</strong> encontrarás una amplia variedad de productos pensados para facilitar la práctica de diferentes disciplinas deportivas a personas con distintas capacidades. Con nuestra gama de sillas de ruedas deportivas, prótesis especializadas y accesorios de natación adaptada, podrás sentirte seguro y cómodo mientras te mantienes activo.
+    </p>
+  </div>
+
+  <!-- CARRUSEL DE IMÁGENES -->
+  <section id="carousel">
+    <div class="carousel-container">
+      <div class="carousel-slide active">
+        <img src="slider1.jpg" alt="Deporte adaptado 1">
+      </div>
+      <div class="carousel-slide">
+        <img src="slider2.jpg" alt="Deporte adaptado 2">
+      </div>
+      <div class="carousel-slide">
+        <img src="slider3.jpg" alt="Deporte adaptado 3">
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button id="prevBtn">&lt;</button>
+      <button id="nextBtn">&gt;</button>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO DE PRODUCTOS -->
+  <section class="catalog">
+    <article class="product">
+      <img src="accesorio1.jpg" alt="Silla de ruedas deportiva">
+      <h3>Silla de Ruedas Deportiva</h3>
+      <p>Diseñada para deportes adaptados, con alta resistencia y comodidad.</p>
+      <a class="btn" href="#">Comprar</a>
+    </article>
+    <article class="product">
+      <img src="accesorio2.jpg" alt="Prótesis deportiva">
+      <h3>Prótesis Deportiva</h3>
+      <p>Optimizada para ofrecer movilidad y rendimiento en actividades deportivas.</p>
+      <a class="btn" href="#">Comprar</a>
+    </article>
+    <article class="product">
+      <img src="accesorio3.jpeg" alt="Equipo adaptado para natación">
+      <h3>Equipo Adaptado de Natación</h3>
+      <p>Accesorios especiales para facilitar la práctica de la natación a personas con capacidades diferentes.</p>
+      <a class="btn" href="#">Comprar</a>
+    </article>
+  </section>
+
+
+  <!-- SCRIPT DEL CARRUSEL -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.carousel-slide');
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+      
+      const nextBtn = document.getElementById('nextBtn');
+      const prevBtn = document.getElementById('prevBtn');
+      
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+        });
+      }
+      
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        showSlide(currentIndex);
+      });
+      
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        showSlide(currentIndex);
+      });
+      
+      // Avanza automáticamente cada 5 segundos
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        showSlide(currentIndex);
+      }, 5000);
+    });
+  </script>
+
+</body>
+</html>
